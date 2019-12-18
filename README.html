@@ -368,15 +368,19 @@ summary {
 
 <div id="arch-scilhs-suicide-datamodeling-scripts" class="section level1">
 <h1>ARCH (SCILHS) Suicide Data/Modeling Scripts</h1>
-<p>Source code for extracting data from the ARCH network sites and running NBC model prediction</p>
+<p>Source code for extracting data from the ARCH ([<a href="https://github.com/ARCH-commons" class="uri">https://github.com/ARCH-commons</a>]) network sites and running NBC model prediction</p>
 <p>Reference:</p>
-<p><em>Validation of an EHR-Based Suicide Risk Alert Algorithm across Multiple Healthcare Systems</em>. (Under Review)<br />
-Yuval Barak-Corren, MD, Victor M. Castro, MS, Matthew K. Nock, PhD, Kenneth Mandl, MD, Emily Madsen, BS, Ashley Seiger, MSc, William Adams, MD, R. Joseph Applegate, BS, Elmer Bernstam, MD, Jeffrey G. Klann, PhD, Galina Lozinski, MS, Ellen McCarthy, PhD, Shawn Murphy, MD, PhD, Marc Natter, MD, Brian Ostasiewski, BS, Nandan Patibandla, MS, Gary Rosenthal, MD, George S. Silva, BS, Kun Wei, BS, Griffin M. Weber, MD, PhD, Sarah R. Weiler, PhD, Ben Y. Reis, PhD, Jordan W. Smoller, MD, ScD</p>
-<div id="files" class="section level3">
-<h3>Files:</h3>
-<p>This repo contains 2 sets of files:<br />
-- The sql files apply inclusion/exclusion criteria, assign case/control status and extract tall data files to text files<br />
-- The R code consumes the text files, trains the suicide prediction model and reports results</p>
+<p>Barak-Corren Y, Castro, VM, Nock, MK, Mandl K, Madsen, E, Seiger, A, Adams, W, Applegate, RJ, Bernstam, E, Klann, JG, Lozinski, G, McCarthy, E, Murphy, SN, Natter, M, Ostasiewski, B, Patibandla, N, Rosenthal, G, Silva, GS, Wei, K, Weber, GM, Weiler, SR, Reis, BY, Smoller, JW. (2019) <em>Validation of an EHR-Based Suicide Risk Alert Algorithm across Multiple Healthcare Systems</em>. Under Review.</p>
+<div id="usage" class="section level3">
+<h3>Usage</h3>
+<p>These scripts will work on an ARCH i2b2 instance on Microsoft SQL Server. The scripts should be run in the following order:</p>
+<ol style="list-style-type: decimal">
+<li>sql/build_rxnorm_ing_list.sql - create a table with a list of RXNORM ingredients for drug grouping</li>
+<li>sql/scilhs_suicide_builddatafiles.sql - apply inclusion/exclusion criteria, assign case/control status and extract tall data files to text files<br />
+</li>
+<li>R/suicide_txt_to_Rds.R - converts to txt files from SQL scripts to RDS</li>
+<li>R/suicide_siteNBC.R - trains the suicide prediction model and reports results</li>
+</ol>
 </div>
 </div>
 

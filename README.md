@@ -1,19 +1,20 @@
 # ARCH (SCILHS) Suicide Data/Modeling Scripts
 
-Source code for extracting data from the ARCH network sites and running NBC model prediction
+Source code for extracting data from the ARCH ([https://github.com/ARCH-commons]) network sites and running NBC model prediction
 
 Reference:
 
-*Validation of an EHR-Based Suicide Risk Alert Algorithm across Multiple Healthcare Systems*.  (Under Review)  
-Yuval Barak-Corren, MD, Victor M. Castro, MS, Matthew K. Nock, PhD, Kenneth Mandl, MD, Emily Madsen, BS, Ashley Seiger, MSc, William Adams, MD, R. Joseph Applegate, BS, Elmer Bernstam, MD, Jeffrey G. Klann, PhD, Galina Lozinski, MS, Ellen McCarthy, PhD, Shawn Murphy, MD, PhD, Marc Natter, MD, Brian Ostasiewski, BS, Nandan Patibandla, MS, Gary Rosenthal, MD, George S. Silva, BS, Kun Wei, BS, Griffin M. Weber, MD, PhD, Sarah R. Weiler, PhD, Ben Y. Reis, PhD, Jordan W. Smoller, MD, ScD
+Barak-Corren Y, Castro, VM, Nock, MK, Mandl K, Madsen, E, Seiger, A, Adams, W, Applegate, RJ, Bernstam, E, Klann, JG, Lozinski, G, McCarthy, E, Murphy, SN, Natter, M, Ostasiewski, B, Patibandla, N, Rosenthal, G, Silva, GS, Wei, K, Weber, GM, Weiler, SR, Reis, BY, Smoller, JW. (2019) *Validation of an EHR-Based Suicide Risk Alert Algorithm across Multiple Healthcare Systems*. Under Review.
+ 
 
+### Usage
 
+These scripts will work on an ARCH i2b2 instance on Microsoft SQL Server.  The scripts should be run in the following order:
 
+1) sql/build_rxnorm_ing_list.sql - create a table with a list of RXNORM ingredients for drug grouping
+2) sql/scilhs_suicide_builddatafiles.sql - apply inclusion/exclusion criteria, assign case/control status and extract tall data files to text files  
+3) R/suicide_txt_to_Rds.R - converts to txt files from SQL scripts to RDS
+4) R/suicide_siteNBC.R - trains the suicide prediction model and reports results
 
-### Files:
-
-This repo contains 2 sets of files:  
- - The sql files apply inclusion/exclusion criteria, assign case/control status and extract tall data files to text files  
- - The R code consumes the text files, trains the suicide prediction model and reports results
 
 
